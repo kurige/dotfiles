@@ -1,0 +1,2 @@
+export EDITOR='subl'
+
