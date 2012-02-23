@@ -1,0 +1,111 @@
+" -------------------------------------
+" General Config
+" -------------------------------------
+
+set ttyfast                " Optimize for fast terminal connections
+set encoding=utf-8 nobomb  " Use UTF-8 without BOM
+set mouse=a                " Enable mouse in all modes
+set noerrorbells           " Disable error bells
+set shortmess=atI          " Don't show the intro message when starting vim
+set history=1000           " Store lots of :cmdline history
+set autoread               " Reload files changed outside vim
+
+" This makes vim act like all other editors, in the sense that buffers can
+" exist in the background without being in a window.
+" http://items.sjbach.com/319/configuring-vim-right
+set hidden
+
+" Centralize backups, swapfiles and undo history
+set backupdir=~/.vimtmp/backups
+set directory=~/.vimtmp/swaps
+if exists("&undodir")
+  set undodir=~/.vimtmp/undo
+endif
+
+" Don't reset cursor to start of line when moving around
+set nostartofline
+
+
+" -------------------------------------
+" Display Settings
+" -------------------------------------
+
+set number        " Enable line numbers
+syntax on         " Enable syntax highlighting
+set cursorline    " Highlight current line
+set laststatus=2  " Always show status line
+set ruler         " Show the cursor position
+set showmode      " Show the current mode
+set title         " Show the filename in the window titlebar
+set showcmd       " Show the (partial) command aas it's being typed
+
+" Show "invisible" characters
+"set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
+set lcs=tab:▸\ ,trail:·
+set list
+
+
+" -------------------------------------
+" Search Settings
+" -------------------------------------
+
+set hlsearch  " Highlight searches
+set incsearch " Highlight dynamically as pattern is typed
+
+
+" -------------------------------------
+" Indentation
+" -------------------------------------
+
+set autoindent
+set smartindent
+set smarttab
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+set expandtab
+
+filetype plugin on
+filetype indent on
+
+set nowrap    " Don't wrap lines
+set linebreak " Wrap lines at convenient points
+
+
+" -------------------------------------
+" Folds
+" -------------------------------------
+
+set foldmethod=indent  " Fold based on indent
+set foldnestmax=3      " Deepest fold is 3 levels deep
+set nofoldenable       " Don't fold by default
+
+
+" -------------------------------------
+" Scrolling
+" -------------------------------------
+
+" Start scrolling eight lines before the horizontal window border
+set scrolloff=8
+set sidescrolloff=15
+set sidescroll=1
+
+
+" -------------------------------------
+" Misc.
+" -------------------------------------
+
+" Change the mapleader.
+" This creates a "namespace" for your personal key maps.
+" Ex. :map <leader>n :new<cr>
+let mapleader=","
+
+" Strip trailing whitespace (,ss)
+function! StripWhitespace()
+	let save_cursor = getpos(".")
+	let old_query = getreg('/')
+	:%s/\s\+$//e
+	call setpos('.', save_cursor)
+	call setreg('/', old_query)
+endfunction
+noremap <leader>ss :call StripWhitespace()<CR>
