@@ -25,6 +25,20 @@ endif
 " Don't reset cursor to start of line when moving around
 set nostartofline
 
+" Change the mapleader.
+" This creates a "namespace" for your personal key maps.
+" Ex. :map <leader>n :new<cr>
+let mapleader=","
+
+
+" -------------------------------------
+" Spell Checking
+" -------------------------------------
+
+" Enable and disable spell checking (english) on command
+map <leader>se :setlocal spell spelllang=en_us<CR>
+map <leader>sn :setlocal nospell<CR>
+
 
 " -------------------------------------
 " Display Settings
@@ -94,11 +108,6 @@ set sidescroll=1
 " -------------------------------------
 " Misc.
 " -------------------------------------
-
-" Change the mapleader.
-" This creates a "namespace" for your personal key maps.
-" Ex. :map <leader>n :new<cr>
-let mapleader=","
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
