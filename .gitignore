@@ -1,7 +1,9 @@
 .DS_Store
-vim/backups
-vim/view
-*un~
-vim/.netrwhist
-vim/tmp
-.netrwhist
+.bundle
+vendor
+emacs/emacs.d.symlink/auto-save-list
+emacs/emacs.d.symlink/backups
+emacs/emacs.d.symlink/el-get
+emacs/emacs.d.symlink/elpa
+emacs/emacs.d.symlink/.smex-items
+emacs/emacs.d.symlink/ac-comphist.dat
