@@ -4,6 +4,9 @@ set-option -g prefix C-a
 # Support for 256 colors
 set -g default-terminal "screen-256color"
 
+# Set default shell
+set-option -g default-shell /usr/local/bin/zsh
+
 # Rather than constraining window size to the maximum size of any client
 # connected to the *session*, constrain window size to the maximum size of any
 # client connected to *that window*. Much more reasonable.
