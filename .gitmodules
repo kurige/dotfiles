@@ -1,9 +1,9 @@
 [submodule "private"]
 	path = submodules/private
 	url = git@bitbucket.org:kurige/dotfiles.private.git
-[submodule "submodules/spot"]
+[submodule "spot"]
 	path = submodules/spot
 	url = https://github.com/guille/spot.git
-[submodule "submodule/todo.txt"]
-	path = submodule/todo.txt
+[submodule "todo.txt"]
+	path = submodules/todo.txt
 	url = https://github.com/ginatrapani/todo.txt-cli.git
