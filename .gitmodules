@@ -1,3 +1,6 @@
 [submodule "private"]
-	path = private
+	path = submodules/private
 	url = git@bitbucket.org:kurige/dotfiles.private.git
+[submodule "submodules/spot"]
+	path = submodules/spot
+	url = https://github.com/guille/spot.git

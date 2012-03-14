@@ -1,0 +1,1 @@
+../submodules/spot/spot.sh
