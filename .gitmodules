@@ -4,3 +4,6 @@
 [submodule "submodules/spot"]
 	path = submodules/spot
 	url = https://github.com/guille/spot.git
+[submodule "submodule/todo.txt"]
+	path = submodule/todo.txt
+	url = https://github.com/ginatrapani/todo.txt-cli.git
