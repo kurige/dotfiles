@@ -1,1 +1,1 @@
-../submodule/todo.txt/todo.sh
+../submodules/todo.txt/todo.sh
