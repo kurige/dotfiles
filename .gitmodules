@@ -7,3 +7,6 @@
 [submodule "todo.txt"]
 	path = submodules/todo.txt
 	url = https://github.com/ginatrapani/todo.txt-cli.git
+[submodule "git-git"]
+	path = submodules/git-git
+	url = git://github.com/jes5199/git-git.git
