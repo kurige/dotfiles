@@ -10,3 +10,6 @@
 [submodule "git-git"]
 	path = submodules/git-git
 	url = git://github.com/jes5199/git-git.git
+[submodule "vim/vim.symlink/bundle/jade.vim"]
+	path = vim/vim.symlink/bundle/jade.vim
+	url = git://github.com/vim-scripts/jade.vim.git
