@@ -26,3 +26,4 @@ include /usr/local/Cellar/task/2.0.0/share/doc/task/rc/dark-yellow-green.theme
 #include /usr/local/Cellar/task/2.0.0/share/doc/task/rc/dark-gray-256.theme
 
 color=on
+data.location=~/Dropbox/task/
