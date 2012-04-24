@@ -11,3 +11,5 @@ alias l='ls -la'
 alias ll='ls -l'
 alias sl=ls # common typo
 
+# Occasionally necessary to fix XCode silliness
+alias ded='rm -rf ~/Library/Developer/Xcode/DerivedData'
