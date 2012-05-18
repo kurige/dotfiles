@@ -64,19 +64,9 @@ bind-key a send-prefix
 # Force a reload of the config file
 bind r source-file ~/.tmux.conf
 
-# Split window like vim
-# bind s split-window -v
-unbind s
-bind s send-keys " ~/bin/tmux_split_custom -v" \; send-keys "Enter"
-# bind S split-window -v -l 20
-unbind S
-bind S send-keys " ~/bin/tmux_split_custom -v -l 20" \; send-keys "Enter"
-# bind v split-window -h
-unbind v
-bind v send-keys " ~/bin/tmux_split_custom -h" \; send-keys "Enter"
-# bind V split-window -h -l 155
-unbind V
-bind V send-keys " ~/bin/tmux_split_custom -h -l 155" \; send-keys "Enter"
+# Easy layout shortcuts
+bind C-v select-layout even-vertical
+bind C-h select-layout even-horizontal
 
 # Navigate panes with hjkl
 bind h select-pane -L
