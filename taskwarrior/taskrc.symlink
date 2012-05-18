@@ -11,7 +11,7 @@
 # Use the command 'task show' to see all defaults and overrides
 
 # Files
-data.location=/Users/chris/.task
+data.location=~/Dropbox/task/
 
 # Color theme (uncomment one to use)
 #include /usr/local/Cellar/task/2.0.0/share/doc/task/rc/light-16.theme
@@ -24,6 +24,4 @@ data.location=/Users/chris/.task
 #include /usr/local/Cellar/task/2.0.0/share/doc/task/rc/dark-violets-256.theme
 include /usr/local/Cellar/task/2.0.0/share/doc/task/rc/dark-yellow-green.theme
 #include /usr/local/Cellar/task/2.0.0/share/doc/task/rc/dark-gray-256.theme
-
 color=on
-data.location=~/Dropbox/task/
