@@ -25,10 +25,18 @@ endif
 " Don't reset cursor to start of line when moving around
 set nostartofline
 
+
+" -------------------------------------
+" Keyboard (re)Mappings
+" -------------------------------------
+
 " Change the mapleader.
 " This creates a "namespace" for your personal key maps.
 " Ex. :map <leader>n :new<cr>
 let mapleader=","
+
+" Quickly exist insert mode by tapping 'jj'
+inoremap jj <Esc>
 
 
 " -------------------------------------
@@ -45,6 +53,7 @@ map <leader>sn :setlocal nospell<CR>
 " -------------------------------------
 
 set number        " Enable line numbers
+set rnu           " Relative line numbers (Not sure I like this yet)
 syntax on         " Enable syntax highlighting
 set cursorline    " Highlight current line
 set laststatus=2  " Always show status line
