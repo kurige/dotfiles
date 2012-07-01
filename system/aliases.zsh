@@ -11,8 +11,11 @@ alias l='ls -la'
 alias ll='ls -l'
 alias sl=ls # common typo
 
-# Handle 'sha1' alias
+# Handy 'sha1' alias
 alias sha1='openssl dgst -sha1'
+
+# Typing 'bundle execute' is a serious PITA
+alias be='bundle execute'
 
 # Occasionally necessary to fix XCode silliness
 alias ded='rm -rf ~/Library/Developer/Xcode/DerivedData'
