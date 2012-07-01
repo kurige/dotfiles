@@ -56,7 +56,7 @@
 	ai = add --interactive
 	caa = commit -a --amend -C HEAD
 
-  l = log --graph --decorate --pretty=oneline --abbrev-commit
+  l = log --color --decorate --graph --abbrev-commit --pretty=format:'%Cred%h%Creset - %C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset'
   la = !git l --all
 
   contribution = "!f() { git log --shortstat --author \"$1\" | grep \"files changed\" | awk '{files+=$1; inserted+=$4; deleted+=$6} END {print \"files changed\", files, \"lines inserted:\", inserted, \"lines deleted:\", deleted}'; }; f"
