@@ -36,7 +36,7 @@ set nostartofline
 let mapleader=","
 
 " Quickly exist insert mode by tapping 'jj'
-inoremap jj <Esc>
+inoremap ii <Esc>
 
 
 " -------------------------------------
@@ -52,15 +52,16 @@ map <leader>sn :setlocal nospell<CR>
 " Display Settings
 " -------------------------------------
 
-set number        " Enable line numbers
-set rnu           " Relative line numbers (Not sure I like this yet)
 syntax on         " Enable syntax highlighting
+set number        " Enable line numbers
+set rnu           " Relative line numbers
 set cursorline    " Highlight current line
 set laststatus=2  " Always show status line
 set ruler         " Show the cursor position
-set showmode      " Show the current mode
 set title         " Show the filename in the window titlebar
+set showmode      " Show the current mode
 set showcmd       " Show the (partial) command aas it's being typed
+set visualbell
 
 " Show "invisible" characters
 "set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
@@ -72,8 +73,19 @@ set list
 " Search Settings
 " -------------------------------------
 
-set hlsearch  " Highlight searches
-set incsearch " Highlight dynamically as pattern is typed
+" Force VIM to use sane regex in search
+nnoremap / /\v
+vnoremap / /\v
+
+set hlsearch   " Highlight searches
+set incsearch  " Highlight dynamically as pattern is typed
+set ignorecase " 
+set smartcase  " All lowercase searches are case insensitive
+set gdefault   " apply substitutinos globally on lines
+set showmatch
+
+" Clear search with ', '
+nnoremap <leader><space> :noh<cr>
 
 
 " -------------------------------------
@@ -88,10 +100,10 @@ set softtabstop=2
 set tabstop=2
 set expandtab
 
-filetype plugin on
-filetype indent on
-
 set nowrap    " Don't wrap lines
+"set textwidth=79
+"set formatoptions=qrn1
+set colorcolumn=80
 set linebreak " Wrap lines at convenient points
 
 

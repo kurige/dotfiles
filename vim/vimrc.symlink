@@ -10,10 +10,7 @@ endif
 " ----- Pathogen installation -----
 " This loads all the plugins in ~/.vim/bundle
 " Use tpope's pathogen plugin to manage all other plugins.
+filetype off
 call pathogen#infect()
-call pathogen#helptags()
+filetype plugin indent on
 
-" source ~/.vimrc.after if it exists.
-if filereadable(expand("~/.vimrc.after"))
-  source ~/.vimrc.after
-endif
