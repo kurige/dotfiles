@@ -1,7 +1,6 @@
 #export EDITOR='subl'
 export EDITOR='vim'
 
+# Initialize RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
-# Initialize RVM and add it to PATH
-PATH=$PATH:$HOME/.rvm/bin
-source ~/.rvm/scripts/rvm
