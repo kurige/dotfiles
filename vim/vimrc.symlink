@@ -7,10 +7,38 @@ if filereadable(expand("~/.vimrc.before"))
   source ~/.vimrc.before
 endif
 
-" ----- Pathogen installation -----
-" This loads all the plugins in ~/.vim/bundle
-" Use tpope's pathogen plugin to manage all other plugins.
-filetype off
-call pathogen#infect()
-filetype plugin indent on
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+" Git repos
+" (All github hosted repos can use 'username/project' instead of full git URI)
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-commentary'
+Bundle 'kien/ctrlp.vim'
+Bundle 'pangloss/vim-javascript'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'Lokaltog/vim-easymotion'
+
+" vim-scripts repos
+Bundle 'a.vim'
+Bundle 'delimitMate.vim'
+Bundle 'bufexplorer.zip'
+Bundle 'L9'
+Bundle 'FuzzyFinder'
+
+filetype plugin indent on     " required!
+
+" Brief help
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install(update) bundles
+" :BundleSearch(!) foo - search(or refresh cache first) for foo
+" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
 
