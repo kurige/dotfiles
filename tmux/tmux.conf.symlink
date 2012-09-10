@@ -24,22 +24,10 @@ set -g base-index 1
 # Large history
 set-option -g history-limit 100000
 
-# set status bar
-set-option -g status-utf8 on
-set-option -g status-interval 1
-set-option -g status-fg colour6
-set-option -g status-bg default
-
-set-option -g status-left '#[fg=250]⣿'
-set-option -g status-right '⣿ ⊙ #S ⡇ #(whoami)@#H ⡇ %Y-%m-%d %H:%M ⣿'
-
-set-option -g status-right-length 100
-set-option -g status-left-length 120
-
 # highlight active window
-set-window-option -g window-status-current-fg colour4
-set-window-option -g window-status-current-bg default
-set-window-option -g window-status-current-attr bright
+#set-window-option -g window-status-current-fg colour4
+#set-window-option -g window-status-current-bg default
+#set-window-option -g window-status-current-attr bright
 set-window-option -g window-status-current-format '« #I #W »'
 
 # set window notifications
@@ -71,3 +59,35 @@ bind C-h select-layout even-horizontal
 # Bind ':' to command-prompt, like vim (this is default already)
 bind : command-prompt
 
+# COLOR THEME
+# From: https://github.com/seebi/tmux-colors-solarized
+
+# default statusbar colors
+set-option -g status-bg colour235 #base02
+set-option -g status-fg colour136 #yellow
+set-option -g status-attr default
+
+# default window title colors
+set-window-option -g window-status-fg colour244 #base0
+set-window-option -g window-status-bg default
+#set-window-option -g window-status-attr dim
+
+# active window title colors
+set-window-option -g window-status-current-fg colour166 #orange
+set-window-option -g window-status-current-bg default
+#set-window-option -g window-status-current-attr bright
+
+# pane border
+set-option -g pane-border-fg colour235 #base02
+set-option -g pane-active-border-fg colour240 #base01
+
+# message text
+set-option -g message-bg colour235 #base02
+set-option -g message-fg colour166 #orange
+
+# pane number display
+set-option -g display-panes-active-colour colour33 #blue
+set-option -g display-panes-colour colour166 #orange
+
+# clock
+set-window-option -g clock-mode-colour colour64 #green
