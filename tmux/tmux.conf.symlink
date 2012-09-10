@@ -59,6 +59,16 @@ bind C-h select-layout even-horizontal
 # Bind ':' to command-prompt, like vim (this is default already)
 bind : command-prompt
 
+# Powerline status-bar setup
+set-option -g status on
+set-option -g status-interval 2
+set-option -g status-utf8 on
+set-option -g status-justify "centre"
+set-option -g status-left-length 120
+set-option -g status-right-length 100
+set-option -g status-left "#(~/.dotfiles/tmux/tmux-powerline/status-left.sh)"
+set-option -g status-right "#(~/.dotfiles/tmux/tmux-powerline/status-right.sh)"
+
 # COLOR THEME
 # From: https://github.com/seebi/tmux-colors-solarized
 
