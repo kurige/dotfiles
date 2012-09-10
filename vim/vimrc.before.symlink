@@ -57,7 +57,7 @@ map <leader>sn :setlocal nospell<CR>
 syntax on         " Enable syntax highlighting
 set number        " Enable line numbers
 set rnu           " Relative line numbers
-set cursorline    " Highlight current line
+"set cursorline    " Highlight current line
 set laststatus=2  " Always show status line
 set ruler         " Show the cursor position
 set title         " Show the filename in the window titlebar
