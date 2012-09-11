@@ -1,2 +1,3 @@
 # Find closest directory wildcard match
-cd `find $PROJECTS -type d -iname "*$1*" -print -quit`
+PROJECT=$(find $PROJECTS -type d -iname "*$1*" -print -quit)
+cd "$PROJECT"
