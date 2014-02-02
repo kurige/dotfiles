@@ -12,6 +12,9 @@ export GOROOT=`brew --prefix go`/libexec
 export GOPATH=~/src/gocode
 export PATH=$PATH:$GOPATH/bin
 
+# Add local project NPM binaries and globally installed NPM binaries to the path
+export PATH=./node_modules/.bin:`npm -g bin`:$PATH
+
 # Initialize RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
