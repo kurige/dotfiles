@@ -45,20 +45,21 @@
 	token = 150b071e213c503d3088f7042ac1bdb3
 
 [alias]
-	s = status
-	d = diff
-	a = add
-	b = branch
-	co = checkout
-	cm = commit -m
-	cam = commit -a -m
-	com = checkout master
-	coo = checkout --orphan
-	undo = reset --hard
-	sub = submodule
-	
-	ai = add --interactive
-	caa = commit -a --amend -C HEAD
+  blame = blame -w
+  s = status
+  d = diff
+  a = add
+  b = branch
+  co = checkout
+  cm = commit -m
+  cam = commit -a -m
+  com = checkout master
+  coo = checkout --orphan
+  undo = reset --hard
+  sub = submodule
+
+  ai = add --interactive
+  caa = commit -a --amend -C HEAD
 
   l = log --color --decorate --graph --abbrev-commit --pretty=format:'%Cred%h%Creset - %C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset'
   la = !git l --all
