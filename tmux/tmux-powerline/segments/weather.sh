@@ -22,22 +22,22 @@ get_condition_symbol() {
         echo "☼"
       fi
       ;;
-    "rain and snow" | "chance of rain" | "light rain" | rain | "heavy rain" | "freezing drizzle" | flurries | showers | "scattered showers" | drizzle | "rain showers")
-      #echo "☂"
-      echo "☔"
+    "rain and snow" | "chance of rain" | "light rain" | rain | "rain mist" | "light rain mist" | "heavy rain" | "freezing drizzle" | flurries | showers | "scattered showers" | drizzle | "rain showers")
+      echo "☂"
+      #echo "☔"
       ;;
     snow | "light snow" | "scattered snow showers" | icy | ice/snow | "chance of snow" | "snow showers" | sleet)
       #echo "☃"
       echo "❅"
       ;;
-    "partly cloudy" | "mostly cloudy" | cloudy | overcast)
+    "partly cloudy" | "mostly cloudy" | "scattered clouds" | cloudy | overcast)
       echo "☁"
       ;;
     "chance of storm" | thunderstorm | "chance of tstorm" | storm | "scattered thunderstorms")
       #echo "⚡"
       echo "☈"
       ;;
-    dust | fog | smoke | haze | mist)
+    dust | fog | smoke | haze | mist | "light drizzle mist")
       echo "♨"
       ;;
     windy)
