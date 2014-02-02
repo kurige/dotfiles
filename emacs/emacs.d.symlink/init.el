@@ -11,9 +11,9 @@
 ;; -------------
 
 (require 'package)
-(add-to-list 'package-archives '("tromey"      . "http://tromey.com/elpa/")             t)
-(add-to-list 'package-archives '("technomancy" . "http://repo.technomancy.us/emacs/")   t)
-(add-to-list 'package-archives '("marmalade"   . "http://marmalade-repo.org/packages/") t)
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
 (package-initialize)
 
 ;; el-get packages
@@ -33,18 +33,15 @@
 ;; Now either el-get is `require'd already, or has been `load'ed by the el-get
 ;; installer, so there's no need to do either ourselves.
 
-;; Simple list of recipes that don't require any configurationAditional
-;; recipes that don't require any configuration
+;; Simple list of recipes that don't require any additional configuration.
 (setq
  my:el-get-packages
- '(el-get         ; el-get is self-hosting
-   keywiz         ; Emacs shortcut quiz
-   textmate       ; Textmate-esque file searching (standalone, or integrated with PeepOpen)
-   coffee-mode    ; Coffe script major mode
-   escreen        ; Screen for emacs, "C-\ C-h"
-   switch-window  ; Takes over "C-x o"
-   auto-complete  ; Complete as you type, using overlays
-   color-theme))  ; Nice looking emacs
+ '(el-get           ; el-get is self-hosting
+   keywiz           ; Emacs shortcut quiz
+   textmate         ; Textmate-esque file searching (standalone, or integrated with PeepOpen)
+   switch-window    ; Takes over "C-x o"
+   auto-complete    ; Complete as you type, using overlays
+   zenburn-theme))  ; Pretty Emacs
 
 ;; And here are all the other recipes that reuire some pre/post action.
 (setq
@@ -56,15 +53,6 @@
 									 (global-set-key (kbd "<C-S-left>")  'buf-move-left)
 									 (global-set-key (kbd "<C-S-right>") 'buf-move-right)))
 
-   (:name ecb                 ; An Emacs-style IDE type thingy
-					:after (lambda ()
-									 (setq stack-trace-on-error t)
-									 (add-to-list 'load-path "~/.emacs.d/el-get/ecb/")
-									 (require 'ecb)
-									 (setq ecb-tip-of-the-day nil)
-									 (setq ecb-primary-secondary-mouse-buttons (quote mouse-1--mouse-2))
-									 (ecb-activate)))
-
    (:name smex                ; A better (ido like) M-x
 					:after (lambda ()
 									 (setq smex-save-file "~/.emacs.d/.smex-items")
@@ -74,19 +62,20 @@
    (:name magit               ; Git meets Emacs, and a binding
           :after (lambda ()
                    (global-set-key (kbd "C-x C-z") 'magit-status)))
-   
+
    (:name goto-last-change    ; Move pointer back to last change
 					:after (lambda ()
 									 ;; When using AZERTY keyboard, consider C-x C-_
 									 (global-set-key (kbd "C-x C-/") 'goto-last-change)))
 
-;;   (:name pretty-mode         ; Substitude symbols and greek letters
-;;					:after (lambda ()
-;;									 (require 'pretty-mode)
-;;									 (global-pretty-mode 1)))
+   (:name pretty-mode         ; Substitude symbols and greek letters
+					:after (lambda ()
+									 (require 'pretty-mode)
+									 (global-pretty-mode 1)))
 
-   (:name zenburn-theme :type http
-					:url "https://github.com/djcb/elisp/raw/master/themes/zenburn-theme.el")))
+   (:name autopair
+          :after (lambda ()
+                   (autopair-global-mode t)))))
 
 (setq my:el-get-packages
       (append
@@ -122,7 +111,7 @@
 ;; Visual settings...
 ;; ------------------
 
-(require 'zenburn-theme) ;; Use the beautiful zenburn theme.
+(load-theme 'zenburn t) ;; Use the beautiful zenburn theme.
 
 (setq inhibit-startup-screen t) ; No startup screen.
 (setq inhibit-splace-screen t) ; No splash screen.
@@ -188,18 +177,6 @@
 
 ;; C-x C-j opens dired with the cursor right on the file you're editing.
 (require 'dired-x)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ecb-options-version "2.40"))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 
 ;; Integration with XCode
 ;; ----------------------
