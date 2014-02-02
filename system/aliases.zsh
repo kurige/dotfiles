@@ -23,3 +23,5 @@ alias be='bundle exec'
 # Occasionally necessary to fix XCode silliness
 alias ded='rm -rf ~/Library/Developer/Xcode/DerivedData'
 
+# Because typing 'git' just takes too long
+alias g=git
