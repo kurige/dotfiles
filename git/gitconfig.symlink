@@ -2,11 +2,15 @@
 	name = Christopher Gateley
 	email = christopher.gateley@gmail.com
 
+[help]
+  autocorrect = 1
+
 [color]
 	diff = auto
 	status = auto
 	branch = auto
 	interactive = auto
+
 	ui = true
 	pager = true
 
