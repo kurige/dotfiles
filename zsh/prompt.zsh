@@ -3,16 +3,16 @@ autoload colors && colors
 # http://github.com/ehrenmurdick/config/blob/master/zsh/prompt.zsh
 
 git_branch() {
-  echo $(/usr/bin/git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
+  echo $(git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
 }
 
 git_dirty() {
-  st=$(/usr/bin/git status 2>/dev/null | tail -n 1)
+  st=$(git status 2>/dev/null | tail -n 1)
   if [[ $st == "" ]]
   then
     echo ""
   else
-    if [[ $st == "nothing to commit (working directory clean)" ]]
+    if [[ $st =~ "nothing to commit" ]]
     then
       echo "on %{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%}"
     else
@@ -22,13 +22,13 @@ git_dirty() {
 }
 
 git_prompt_info () {
-  ref=$(/usr/bin/git symbolic-ref HEAD 2>/dev/null) || return
+  ref=$(git symbolic-ref HEAD 2>/dev/null) || return
 # echo "(%{\e[0;33m%}${ref#refs/heads/}%{\e[0m%})"
   echo "${ref#refs/heads/}"
 }
 
 unpushed () {
-  /usr/bin/git cherry -v origin/$(git_branch) 2>/dev/null
+  git cherry -v origin/$(git_branch) 2>/dev/null
 }
 
 need_push () {
@@ -59,15 +59,20 @@ todo(){
   fi
 }
 
-PROMPT='%F{green}%3c%F{blue} [%f '
-RPROMPT='$(git_dirty)$(need_push)%F{blue}] $(todo)%{$reset_color%}'
+rvm_prompt () {
+  rvm=$(rvm-prompt)
 
-#export PROMPT=$'\n$(rvm_prompt) in $(directory_name) $(git_dirty)$(need_push)\n› '
-#set_prompt () {
-#  export RPROMPT="%{$fg_bold[cyan]%}$(todo)%{$reset_color%}"
-#}
-#
-#precmd() {
-#  title "zsh" "%m" "%55<...<%~"
-#  set_prompt
-#}
+  if [[ $rvm =~ "@" ]]
+  then
+    rvm=${rvm:s/ruby-/r/}
+    rvm=${rvm:gs/.//}
+    echo " $rvm"
+    return
+  fi
+
+  echo ""
+}
+
+PROMPT='%F{green}%3c%f%F{magenta}$(rvm_prompt)%f %F{blue}[%f '
+#RPROMPT='$(git_dirty)$(need_push)%F{blue}] $(todo)%{$reset_color%}'
+RPROMPT='$(git_dirty)$(need_push)%F{blue}]%f'
