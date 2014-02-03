@@ -12,8 +12,14 @@ export GOROOT=`brew --prefix go`/libexec
 export GOPATH=~/src/gocode
 export PATH=$PATH:$GOPATH/bin
 
+# Default editor
+export EDITOR="vim"
+
 # Add local project NPM binaries and globally installed NPM binaries to the path
 export PATH=./node_modules/.bin:`npm -g bin`:$PATH
+
+# GRC adds colors to many unix commands
+source "`brew --prefix`/etc/grc.bashrc"
 
 # Initialize RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
