@@ -66,8 +66,8 @@ set-option -g status-utf8 on
 set-option -g status-justify "centre"
 set-option -g status-left-length 120
 set-option -g status-right-length 100
-set-option -g status-left "#(~/.dotfiles/tmux/tmux-powerline/status-left.sh)"
-set-option -g status-right "#(~/.dotfiles/tmux/tmux-powerline/status-right.sh)"
+set-option -g status-left "#($ZSH/submodules/tmux-powerline/powerline.sh left)"
+set-option -g status-right "#($ZSH/submodules/tmux-powerline/powerline.sh right)"
 
 # COLOR THEME
 # From: https://github.com/seebi/tmux-colors-solarized
