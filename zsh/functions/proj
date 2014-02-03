@@ -1,3 +1,18 @@
-# Find closest directory wildcard match
-PROJECT=$(find $PROJECTS -type d -iname "*$1*" -print -quit)
-cd "$PROJECT"
+# Jump to project root directory
+# You must have $PROJECTS environment variable set to the path you want to
+# start the search from. (ex. `PROJECTS=~/src`)
+
+# Maximum depth to search to. If your root project directory is more than 10
+# levels below $PROJECTS, then you're doing something wrong.
+local maxDepth=10
+
+local depth=0 result=""
+
+# This is a horrible hack that approximates depth-first search by abusing
+# the 'find' command's -{min,max}depth arguments.
+while result=$(find -s $PROJECTS -type d -mindepth $depth -maxdepth $depth -iname "*$1*" -print -quit) && [ -z "$result" ] && [ "$depth" -le "$maxDepth" ]; do ((depth++)); done;
+
+if [ -n "$result" ]
+then cd $result
+else echo "Project directory not found."
+fi
