@@ -1,14 +1,15 @@
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side-effect.
 set nocompatible
+filetype off
 
-" source ~/.vimrc.before if it exists.
-if filereadable(expand("~/.vimrc.before"))
-  source ~/.vimrc.before
+" source ~/.vim/init if it exists.
+if filereadable(expand("~/.vim/init"))
+  source ~/.vim/init
 endif
 
-set nocompatible               " be iMproved
-filetype off                   " required!
+" Go lang setup
+set rtp+=$GOROOT/misc/vim
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -18,7 +19,14 @@ Bundle 'gmarik/vundle'
 
 " Git repos
 " (All github hosted repos can use 'username/project' instead of full git URI)
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'docunext/closetag.vim'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'nono/vim-handlebars'
 Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-commentary'
@@ -26,6 +34,9 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'goldfeld/vim-seek'
+Bundle 'scrooloose/syntastic'
+Bundle 'scrooloose/nerdtree'
 
 " vim-scripts repos
 Bundle 'a.vim'
@@ -41,4 +52,12 @@ filetype plugin indent on     " required!
 " :BundleInstall(!)    - install(update) bundles
 " :BundleSearch(!) foo - search(or refresh cache first) for foo
 " :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+
+
+" -------------------------------------
+" NERDTree
+" -------------------------------------
+
+" Toggle NERDTree visibility
+nmap <leader>e :NERDTreeToggle<CR>
 
