@@ -58,21 +58,44 @@
   undo = reset --hard
   sub = submodule
 
+  spp = !sh -c 'git stash && git pull && git stash pop'
+
   ai = add --interactive
   caa = commit -a --amend -C HEAD
 
   l = log --color --decorate --graph --abbrev-commit --pretty=format:'%Cred%h%Creset - %C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset'
   la = !git l --all
 
+  restore = !git checkout $(git rev-list -n 1 HEAD -- "$1")^ -- "$1"
+
   contribution = "!f() { git log --shortstat --author \"$1\" | grep \"files changed\" | awk '{files+=$1; inserted+=$4; deleted+=$6} END {print \"files changed\", files, \"lines inserted:\", inserted, \"lines deleted:\", deleted}'; }; f"
+
+  files = !sh -c 'git show $@ --name-only --pretty=format:\"\" | sort -u | sed \"/^$/d\" | tr \"\n\" \",\"' -
+
+  new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+
+  aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
+
+  bd = "!git branch --merged | grep -v \"\\*\" | xargs -n 1 git branch -d"
+
+  report = log --author=Chris --since='2 mondays ago' --until='1 monday ago' --format='%Cred%h%Creset - %C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --no-merges
 
 [mergetool]
 	keepBackup = true
+
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
+
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+
 [push]
 	default = tracking
+
+[pull]
+  rebase = preserve
+
+[merge]
+  renameLimit = 20000
