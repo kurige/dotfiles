@@ -35,7 +35,7 @@
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
   quotepath = false
   editor = subl -n -w
-  excludesfile = /Users/Gateley/.gitignore_global
+  excludesfile = ~/.gitignore
 
 [branch]
   autosetuprebase = always
@@ -58,16 +58,12 @@
   keepBackup = true
 
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path = 
 
 [mergetool "sourcetree"]
-	cmd = /opt/homebrew-cask/Caskroom/sourcetree/1.9.8/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-
-[github]
-  user = kurige
-  token = 150b071e213c503d3088f7042ac1bdb3
+  cmd = /opt/homebrew-cask/Caskroom/sourcetree/1.9.8/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
 
 [alias]
   blame = blame -w
