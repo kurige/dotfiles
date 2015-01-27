@@ -3,7 +3,7 @@
 # }
 
 [[ -z $ZSH_CUSTOM ]] && ZSH_CUSTOM=$(dirname $(readlink ~/.zshrc))
-[[ -z $DOT_FILES   ]] && DOT_FILES=$(abspath $ZSH_CUSTOM/..)
+[[ -z $DOT_FILES ]] && DOT_FILES=$(dirname $(readlink ~/.dotfiles-anchor))
 
 # ZSH {
     # autoload -Uz zcalc
