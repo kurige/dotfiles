@@ -1,15 +1,6 @@
 [submodule "private"]
 	path = submodules/private
 	url = git@bitbucket.org:kurige/dotfiles.private.git
-[submodule "spot"]
-	path = submodules/spot
-	url = https://github.com/guille/spot.git
-[submodule "todo.txt"]
-	path = submodules/todo.txt
-	url = https://github.com/ginatrapani/todo.txt-cli.git
-[submodule "git-git"]
-	path = submodules/git-git
-	url = git://github.com/jes5199/git-git.git
 [submodule "vim/vim.symlink/bundle/vundle"]
 	path = vim/vim.symlink/bundle/vundle
 	url = git://github.com/gmarik/vundle.git
