@@ -1,9 +1,12 @@
 [submodule "private"]
-	path = submodules/private
-	url = git@bitbucket.org:kurige/dotfiles.private.git
-[submodule "vim/vim.symlink/bundle/vundle"]
-	path = vim/vim.symlink/bundle/vundle
-	url = git://github.com/gmarik/vundle.git
+    path = submodules/private
+    url = git@bitbucket.org:kurige/dotfiles.private.git
+[submodule "submodules/Vundle.vim"]
+    path = submodules/Vundle.vim
+    url = git@github.com:gmarik/Vundle.vim.git
 [submodule "submodules/tmux-powerline"]
-	path = submodules/tmux-powerline
-	url = https://github.com/erikw/tmux-powerline/
+    path = submodules/tmux-powerline
+    url = https://github.com/erikw/tmux-powerline/
+[submodule "submodules/powerline-fonts"]
+    path = submodules/powerline-fonts
+    url = git@github.com:powerline/fonts.git
