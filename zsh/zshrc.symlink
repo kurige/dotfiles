@@ -1,21 +1,68 @@
+# Modeline {
+#    vi: foldmarker={,} foldmethod=marker foldlevel=0 tabstop=4 filetype=sh
+# }
 
-# Shortcut to this dotfiles path is $ZSH
-export ZSH=$HOME/.dotfiles
+[[ -z $ZSH_CUSTOM ]] && ZSH_CUSTOM=$(dirname $(readlink ~/.zshrc))
+[[ -z $DOT_FILES   ]] && DOT_FILES=$(abspath $ZSH_CUSTOM/..)
 
-# Your project folder that we can `c [tab]` to:
-export PROJECTS=~/src
+# ZSH {
+    # autoload -Uz zcalc
 
-# Source every .zsh file in this rep
-for config_file ($ZSH/**/*.zsh) source $config_file
+    # Options
+    setopt auto_cd                     # Allow cd by only typing dir name
+    # setopt no_correct_all            #
+    setopt histignorealldups           # Self-explanator
+    setopt sharehistory                #
 
-# Use .localrc for SUPER SECRET CRAP that you don't
-# want in your public, versioned repo.
-if [[ -a ~/.localrc ]]
-then
-  source ~/.localrc
-fi
+    # Fix default zstyle for tab completion
+    zstyle ':completion:*' format ''
+    zstyle ':completion:*' menu select auto
+# }
 
-# Initialize autocomplete here, otherwise functions won't be loaded
-autoload -U compinit
-compinit
+# ZSH Custom {
+    # Load our custom functions and aliases
+    for config_file ($ZSH_CUSTOM/*.zsh); do
+        source $config_file
+    done
+# }
 
+# Antigen {
+    # Load antigen
+    source $DOT_FILES/submodules/antigen/antigen.zsh
+
+    # Enable usage of oh-my-zsh plugins as antigen bundles
+    antigen use oh-my-zsh
+
+    if is_osx; then
+      antigen bundle osx
+      antigen bundle brew
+      antigen bundle sublime
+    fi
+
+    # Bundles from the default repo (rubbyrussell's oh-my-zsh)
+    antigen bundles <<EOBUNDLES
+        # Try to guess at what I'm trying to do (might be annoying)
+        command-not-found
+
+        zsh-users/zsh-completions src
+        zsh-users/zsh-syntax-highlighting
+EOBUNDLES
+
+    # Load the theme
+    antigen theme robbyrussell
+
+    # Tell antigen we're done
+    # (Applies deferred compdef/compinit)
+    antigen apply
+# }
+
+# Path {
+    export EDITOR='vim'
+    export GIT_EDITOR='vim'
+    if is_osx; then
+        export GIT_EDITOR='subl'
+    fi
+
+    PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+    [[ -e ~/.rvm/scripts/rvm ]] && source ~/.rvm/scripts/rvm
+# }
