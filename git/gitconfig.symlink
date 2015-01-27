@@ -58,12 +58,12 @@
   keepBackup = true
 
 [difftool "sourcetree"]
-  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-  path = 
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
 
 [mergetool "sourcetree"]
-  cmd = /opt/homebrew-cask/Caskroom/sourcetree/1.9.8/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-  trustExitCode = true
+	cmd = /opt/homebrew-cask/Caskroom/sourcetree/1.9.8/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
 
 [alias]
   blame = blame -w

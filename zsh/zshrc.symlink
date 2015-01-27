@@ -30,7 +30,7 @@
     # Load antigen
     source $DOT_FILES/submodules/antigen/antigen.zsh
 
-    # Enable usage of oh-my-zsh plugins as antigen bundles
+    # Load OMZ lib files and use OMZ plugins as antigen bundles
     antigen use oh-my-zsh
 
     if is_osx; then
