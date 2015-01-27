@@ -1,6 +1,6 @@
 [submodule "private"]
-    path = submodules/private
-    url = git@bitbucket.org:kurige/dotfiles.private.git
+	path = submodules/private
+	url = git@bitbucket.org:kurige/dotfiles.private.git
 [submodule "submodules/Vundle.vim"]
     path = submodules/Vundle.vim
     url = git@github.com:gmarik/Vundle.vim.git

@@ -5,4 +5,4 @@
 !/.gitignore
 
 # and 'vundle'
-!/vundle
+!/Vundle.vim
