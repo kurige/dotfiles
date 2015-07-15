@@ -1,4 +1,7 @@
 
+is_linux () { [[ $('uname') == 'Linux'  ]]; }
+is_osx () { [[ $('uname') == 'Darwin' ]]; }
+
 abspath () {
     if [[ -d "$1" ]]
     then
@@ -16,27 +19,24 @@ abspath () {
     fi
 }
 
-is_linux () { [[ $('uname') == 'Linux'  ]]; }
-is_osx   () { [[ $('uname') == 'Darwin' ]]; }
+joinstr () {
+    -joinstr \* "$@"
+}
 
-proj () {
-    # Do a breadth-first search of the filesystem to jump to a directory.
-    # Default starting location is $HOME, but this can be overridden using the $PROJ_ROOT environment variable.
-    local max_depth=10 depth=0 result=""
+-joinstr () {
+    local IFS="$1"
+    shift
+    echo "$*"
+}
 
-    local start_dir="$PROJ_ROOT"
-    [ -z "$start_dir" ] && start_dir="$HOME"
+# An experimental alternative to `proj` that uses fuzzy filename expansion
+fcd () {
+    cd "$(joinstr $(echo "$*" | fold -w1))*"
+}
 
-    # This is a horrible hack that approximates depth-first search by abusing
-    # the 'find' command's -{min,max}depth arguments.
-    while result=$(find -s $start_dir -type d -mindepth $depth -maxdepth $depth -iname "*$1*" -print -quit) && [ -z "$result" ] && [ "$depth" -le "$max_depth" ]; do
-        ((depth++))
+fproj () {
+    local all_args_as_single_string="${(j. .)${(z)@}}"
+    for char in $all_args_as_single_string; do
+        print -l $char
     done
-
-    if [ -n "$result" ]; then
-        cd $result
-        echo $(pwd)
-    else
-        echo "No results found"
-    fi
 }

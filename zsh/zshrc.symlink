@@ -9,10 +9,17 @@
     # autoload -Uz zcalc
 
     # Options
-    setopt auto_cd                     # Allow cd by only typing dir name
-    # setopt no_correct_all            #
-    setopt histignorealldups           # Self-explanator
-    setopt sharehistory                #
+    setopt auto_cd              # Implicit `cd` by typing directory name/path
+    # setopt no_correct_all     #
+    setopt histignorealldups    # Self-explanatory
+    setopt sharehistory         #
+
+    setopt prompt_subst         # Do parameter/command/arithmetic expansion of
+                                # command prompt before doing special prompt
+                                # expansion. (Set by default by oh-my-zsh)
+
+    setopt prompt_percent       # A whole family of advanced '%' expansions,
+                                # including a useful conditional expansion.
 
     # Fix default zstyle for tab completion
     zstyle ':completion:*' format ''
@@ -22,6 +29,7 @@
 # ZSH Custom {
     # Load our custom functions and aliases
     for config_file ($ZSH_CUSTOM/*.zsh); do
+        #echo "Loading config file $config_file"
         source $config_file
     done
 # }
@@ -31,38 +39,58 @@
     source $DOT_FILES/submodules/antigen/antigen.zsh
 
     # Load OMZ lib files and use OMZ plugins as antigen bundles
+    COMPLETION_WAITING_DOTS=true
     antigen use oh-my-zsh
 
     if is_osx; then
-      antigen bundle osx
-      antigen bundle brew
-      antigen bundle sublime
+        # OS X specific bundles
+        antigen bundle osx
     fi
 
-    # Bundles from the default repo (rubbyrussell's oh-my-zsh)
-    antigen bundles <<EOBUNDLES
-        # Try to guess at what I'm trying to do (might be annoying)
-        command-not-found
+    antigen bundle git-flow
 
-        zsh-users/zsh-completions src
-        zsh-users/zsh-syntax-highlighting
-EOBUNDLES
+    antigen bundle jocelynmallon/zshmarks
+
+    antigen bundle zsh-users/zsh-completions src
+
+    ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+    antigen bundle zsh-users/zsh-syntax-highlighting
 
     # Load the theme
-    antigen theme robbyrussell
+    antigen theme $ZSH_CUSTOM/themes kurige
 
     # Tell antigen we're done
     # (Applies deferred compdef/compinit)
     antigen apply
 # }
 
-# Path {
+# Environment {
+    # TODO: Check all of the following:
+    # 1) We are on OSX
+    # 2) Homebrew is intalled
+    # 3) autoenv is installed through homebrew
+
+    # Activate autoenv
+    source `brew --prefix autoenv`/activate.sh
+
+    # Set JAVA_HOME to default JVM version
+    jdk init
+
     export EDITOR='vim'
     export GIT_EDITOR='vim'
-    if is_osx; then
-        export GIT_EDITOR='subl'
-    fi
 
-    PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+    # Add dot-files bin dir to path
+    PATH=$PATH:$DOT_FILES/bin
+
+    # Add nimble (nim programming language package manager) bin folder to path
+    PATH=$PATH:$HOME/.nimble/bin
+    
+    # Add RVM to PATH for scripting
+    PATH=$PATH:$HOME/.rvm/bin
     [[ -e ~/.rvm/scripts/rvm ]] && source ~/.rvm/scripts/rvm
+
+    export PATH=$HOME/torch/install/bin:$PATH                            # Added automatically by torch-dist
+    export LD_LIBRARY_PATH=$HOME/torch/install/lib:$LD_LIBRARY_PATH      # Added automatically by torch-dist
+    export DYLD_LIBRARY_PATH=$HOME/torch/install/lib:$DYLD_LIBRARY_PATH  # Added automatically by torch-dist
 # }
+
