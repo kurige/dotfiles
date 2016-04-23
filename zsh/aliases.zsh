@@ -12,3 +12,8 @@ alias timestamp='date +%s'
       xcrun simctl list devices | grep -v '^[-=]' | cut -d "(" -f2 | cut -d ")" -f1 | xargs -I {} xcrun simctl erase "{}"
     }
 # }
+
+# 'pbcopy' without the trailing newline character
+# Note: This requires the homebrew package 'coreutils' to be installed. The
+# version of 'head' that comes with OSX does not allow for negative byte counts.
+alias copy='ghead -c -1 | pbcopy'
