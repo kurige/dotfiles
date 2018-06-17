@@ -32,9 +32,6 @@ set autoread       " Automatically reload files that are modified outside of vim
 if has("gui_running")
   set guioptions-=T " Remove the toolbar
   set lines=40      " 40 lines of text instead of 24
-  if has("gui_macvim")
-    set transparency=5 " Make the window slightly transparent
-  endif
 else
   if &term == 'xterm' || &term =~ '^screen'
     set t_Co=256       " Enable 256 colors
@@ -44,7 +41,7 @@ else
   set mouse=a
   if has("mouse_sgr")
     set ttymouse=sgr
-  else
+  elseif !has('nvim')
     set ttymouse=xterm2
   endif
 endif
