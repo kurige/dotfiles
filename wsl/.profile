@@ -31,11 +31,9 @@ export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-. "$HOME/.cargo/env"
+# set default editor for a variety of programs
+export VISUAL=vim
+export EDITOR="$VISUAL"
 
 # Some tweaks to get GUI programs working smoother under WSL
 export WSL_IP=`ip route | awk "/default via /" | cut -d" " -f3`
@@ -43,3 +41,12 @@ export DISPLAY="${WSL_IP}:0.0"
 export LIBGL_ALWAYS_INDIRECT=1
 export XDG_RUNTIME_DIR="/tmp/user/${UID}"
 export RUNLEVEL=3
+
+# Rust env setup
+. "$HOME/.cargo/env"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
